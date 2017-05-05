@@ -153,7 +153,8 @@ int isBaseTwo(int num)
 }
 int isFull(pageEntry* arr, int size)
 {
-    for(int i = 0;i<size;i++)
+    int i;
+    for( i = 0;i<size;i++)
     {
         if(arr[i].virtualPage==-1)
         {
@@ -164,7 +165,8 @@ int isFull(pageEntry* arr, int size)
 }
 int containsPage(pageEntry* arr, int size, int page)
 {
-    for(int i = 0;i<size;i++)
+    int i;
+    for( i = 0;i<size;i++)
     {
         if(arr[i].virtualPage == page)
         {
@@ -175,7 +177,8 @@ int containsPage(pageEntry* arr, int size, int page)
 }
 int insertPage(pageEntry* arr, int size, int page)
 {
-    for(int i = 0;i<size;i++)
+    int i;
+    for( i = 0;i<size;i++)
     {
         if(arr[i].virtualPage == -1)
         {
@@ -188,7 +191,8 @@ int insertPage(pageEntry* arr, int size, int page)
 void displayTable(pageEntry* pageEntries, int size)
 {
     printf("-----------------\n| VP    | PF    |\n-----------------\n");
-    for(int i = 0;i<size;i++)
+    int i;
+    for( i = 0;i<size;i++)
     {
         if(pageEntries[i].virtualPage!=-1)
         {
@@ -199,7 +203,8 @@ void displayTable(pageEntry* pageEntries, int size)
 }
 void initializePageEntries(pageEntry* pageEntries, int size)
 {
-    for(int i = 0;i<size;i++)
+    int i;
+    for( i = 0;i<size;i++)
     {
         pageEntries[i].virtualPage=-1;
         pageEntries[i].policyCounter = -1;
@@ -213,7 +218,8 @@ pageEntry* updateCounters(pageEntry* arr, int size, int newestIndex) //updates c
     if(counter == -1)
     {
         arr[newestIndex].policyCounter = 0;
-        for(int i = 0;i<size;i++)
+        int i;
+        for( i = 0;i<size;i++)
         {
             if(arr[i].policyCounter!=-1 && i!=newestIndex)
             {
@@ -222,8 +228,8 @@ pageEntry* updateCounters(pageEntry* arr, int size, int newestIndex) //updates c
         }
         return arr;
     }
-        
-    for(int i = 0;i<size;i++)
+    int i;    
+    for( i = 0;i<size;i++)
     {
         if(arr[i].policyCounter!=-1 && i!=newestIndex && arr[i].policyCounter<=counter)
         {
@@ -236,7 +242,8 @@ pageEntry* updateCounters(pageEntry* arr, int size, int newestIndex) //updates c
 int getIndexToReplace(pageEntry* arr, int size)
 {
     int index=0;
-    for(int i = 0;i<size;i++)
+    int i;
+    for( i = 0;i<size;i++)
     {
         if(arr[i].policyCounter > arr[index].policyCounter)
         {
@@ -250,7 +257,8 @@ int getIndexToReplace(pageEntry* arr, int size)
 
 void displayTestingTable(pageEntry* arr, int size, int pageSize)
 {
-    for(int i = 0;i<size;i++)
+    int i;
+    for( i = 0;i<size;i++)
     {
         printf("VP: %i  PF: %i  Ctr: %i\n",arr[i].virtualPage, i, arr[i].policyCounter);
     }
