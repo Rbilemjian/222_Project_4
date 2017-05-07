@@ -192,14 +192,28 @@ void displayTable(pageEntry* pageEntries, int size)
 {
     printf("-----------------\n| VP    | PF    |\n-----------------\n");
     int i;
-    for( i = 0;i<size;i++)
+    int count = numElements(pageEntries, size)-1;
+    while(count>-1)
     {
-        if(pageEntries[i].virtualPage!=-1)
+        int j;
+        for(j = 0;j<size;j++)
         {
-            printf("| %i     | %i     |\n", pageEntries[i].virtualPage, i);
+            if(pageEntries[j].policyCounter == count)
+                printf("| %i     | %i     |\n-----------------\n",pageEntries[j].virtualPage,j);
         }
+        count--;
     }
-    printf("-----------------\n");
+}
+int numElements(pageEntry* arr, int size)
+{
+    int i;
+    int count=0;
+    for(i = 0;i<size;i++)
+    {
+        if(arr[i].virtualPage!=-1)
+            count++;
+    }
+    return count;
 }
 void initializePageEntries(pageEntry* pageEntries, int size)
 {
